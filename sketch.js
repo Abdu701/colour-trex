@@ -38,13 +38,13 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas();
   
-  sun = createSprite(width-50,100,10,10);
+  sun = createSprite();
   sun.addAnimation("sun", sunAnimation);
   sun.scale = 0.1
   
-  trex = createSprite(50,height-70,20,50);
+  trex = createSprite();
   
   
   trex.addAnimation("running", trex_running);
@@ -53,7 +53,7 @@ function setup() {
   trex.scale = 0.08
   // trex.debug=true
   
-  invisibleGround = createSprite(width/2,height-10,width,125);  
+  invisibleGround = createSprite();  
   invisibleGround.shapeColor = "#f4cbaa";
   
   ground = createSprite(width/2,height,width,2);
@@ -94,10 +94,10 @@ function draw() {
     score = score + Math.round(getFrameRate()/60);
     ground.velocityX = -(6 + 3*score/100);
     
-    if((touches.length > 0 || keyDown("SPACE")) && trex.y  >= height-120) {
+    if(( || keyDown("SPACE")) && trex.y  >= height-120) {
       jumpSound.play( )
       trex.velocityY = -10;
-       touches = [];
+      
     }
     
     trex.velocityY = trex.velocityY + 0.8
